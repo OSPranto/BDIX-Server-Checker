@@ -2,10 +2,6 @@
 # 🌐 OSPranto Tech BDiX Server Checker
 
 
-
-[Image of a network diagram showing a computer checking multiple servers]
-
-
 **BDiX Server Checker** হলো OSPranto Tech দ্বারা নির্মিত একটি সিম্পল টুল যা আপনার বর্তমান ISP নেটওয়ার্ক থেকে কোন BDiX (Bangladesh Internet Exchange) সার্ভারগুলি কাজ করছে এবং কোনটি করছে না, তা পরীক্ষা করে দেখায়। এটি Vercel-এ সহজে ডেপ্লয় করার জন্য ডিজাইন করা হয়েছে।
 
 ---
@@ -92,8 +88,7 @@ cd bdix-server-checker
 
 -----
 
-\<p align="center"\>
-\&copy; 2024 OSPranto Tech. All rights reserved.
+\<p 2024 OSPranto Tech. All rights reserved.
 \</p\>
 
 ```
