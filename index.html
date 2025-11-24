@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSPranto Tech BDiX Server Checker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0d1117; /* GitHub Dark Mode Background */
+            color: #c9d1d9; /* Light text color */
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        header {
+            background-color: #161b22; /* Slightly darker header */
+            padding: 40px 20px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #238636; /* OSPranto Green border */
+        }
+
+        header h1 {
+            color: #238636; /* OSPranto Green */
+            font-weight: 700;
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #8b949e;
+            font-size: 1.1em;
+        }
+
+        main {
+            padding: 0 20px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Loading Spinner */
+        #loading-message {
+            display: block; /* Initially visible */
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .loader {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #238636;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 15px auto 0;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /* End Loading Spinner */
+
+        .server-status {
+            background-color: #161b22;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .working-title {
+            color: #3fb950; /* Green for success */
+            border-bottom: 2px solid #3fb950;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .not-working-title {
+            color: #f85149; /* Red for failure */
+            border-bottom: 2px solid #f85149;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .server-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .server-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #21262d;
+        }
+
+        .server-item:last-child {
+            border-bottom: none;
+        }
+
+        .server-item a {
+            color: #58a6ff;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .server-item a:hover {
+            text-decoration: underline;
+            color: #79c0ff;
+        }
+
+        .status-icon {
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .working .status-icon {
+            background-color: #238636;
+            color: white;
+        }
+
+        .not-working .status-icon {
+            background-color: #891d29;
+            color: white;
+        }
+
+        /* Footer and Contact Info */
+        footer {
+            background-color: #161b22;
+            padding: 20px;
+            border-top: 2px solid #238636;
+        }
+
+        .contact-info {
+            margin-bottom: 15px;
+        }
+        
+        .contact-info h3 {
+            color: #238636;
+            margin-top: 0;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+            font-size: 0.95em;
+        }
+
+        .contact-info a {
+            color: #58a6ff;
+            text-decoration: none;
+        }
+
+        .copyright {
+            color: #8b949e;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>OSPranto Tech BDiX Server Checker</h1>
+        <p>আপনার ISP দ্বারা সমর্থিত BDiX সার্ভারগুলি চেক করুন।</p>
+    </header>
+
+    <main>
+        <div id="loading-message">
+            <h2>চেক করা হচ্ছে... অনুগ্রহ করে অপেক্ষা করুন।</h2>
+            <div class="loader"></div>
+        </div>
+
+        <section class="server-status" id="working-section">
+            <h2 class="working-title">✅ কার্যকরী সার্ভারসমূহ (Working)</h2>
+            <ul id="working-list" class="server-list">
+                </ul>
+        </section>
+
+        <section class="server-status" id="not-working-section">
+            <h2 class="not-working-title">❌ অকার্যকরী সার্ভারসমূহ (Not Working)</h2>
+            <ul id="not-working-list" class="server-list">
+                </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="contact-info">
+            <h3>OSPranto Tech - Contact</h3>
+            <p><strong>GitHub:</strong> <a href="https://github.com/OSPrantoTech" target="_blank">OSPranto Tech</a></p>
+            <p><strong>Email:</strong> <a href="mailto:OSPranto.Official@gmail.com">OSPranto.Official@gmail.com</a></p>
+            <p><strong>Facebook:</strong> <a href="https://www.facebook.com/AdnanHasanPranto" target="_blank">Adnan Hasan Pranto</a></p>
+            <p><strong>Telegram:</strong> <a href="https://t.me/MrMysteryMoon" target="_blank">@MrMysteryMoon</a></p>
+        </div>
+        <p class="copyright">&copy; 2024 OSPranto Tech. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // BDiX সার্ভার লিঙ্কগুলির তালিকা
+        // **গুরুত্বপূর্ণ:** আপনার প্রয়োজন অনুযায়ী এই তালিকাটি পরিবর্তন করুন এবং আপনার প্রকৃত BDiX সার্ভার লিঙ্কগুলো যোগ করুন।
+        const bdixServers = [
+            { name: "BDiX Movies (Example 1)", url: "http://example.bdix.server/movies/" }, 
+            { name: "BDiX FTP (Example 2)", url: "http://192.168.1.100/" }, 
+            { name: "BDiX Server 3 (Example 3)", url: "http://10.10.10.10/" },
+            { name: "BDiX Live TV (Example 4)", url: "http://example.bdix.server/live/" },
+            // এখানে আরো সার্ভার যোগ করুন
+            { name: "External Test Link", url: "https://www.google.com/" }, // এটি সাধারণত BDiX নেটওয়ার্কের বাইরে থাকে
+        ];
+
+        // পরীক্ষার জন্য Time-out সেটিংস (মিলি-সেকেন্ডে)
+        const TIMEOUT_MS = 5000; // 5 সেকেন্ড
+
+        // DOM উপাদানগুলি নির্বাচন
+        const workingList = document.getElementById('working-list');
+        const notWorkingList = document.getElementById('not-working-list');
+        const loadingMessage = document.getElementById('loading-message');
+        const workingSection = document.getElementById('working-section');
+        const notWorkingSection = document.getElementById('not-working-section');
+
+        /**
+         * একটি সার্ভারকে Working হিসেবে ডিসপ্লে করে।
+         * @param {object} server - সার্ভার অবজেক্ট { name, url }
+         */
+        function displayWorking(server) {
+            const listItem = document.createElement('li');
+            listItem.className = 'server-item working';
+            listItem.innerHTML = `
+                <span>${server.name}</span>
+                <a href="${server.url}" target="_blank">${server.url}</a>
+                <span class="status-icon">Working</span>
+            `;
+            workingList.appendChild(listItem);
+        }
+
+        /**
+         * একটি সার্ভারকে Not Working হিসেবে ডিসপ্লে করে।
+         * @param {object} server - সার্ভার অবজেক্ট { name, url }
+         */
+        function displayNotWorking(server) {
+            const listItem = document.createElement('li');
+            listItem.className = 'server-item not-working';
+            listItem.innerHTML = `
+                <span>${server.name}</span>
+                <a href="${server.url}" target="_blank">${server.url}</a>
+                <span class="status-icon">Not Working</span>
+            `;
+            notWorkingList.appendChild(listItem);
+        }
+
+        /**
+         * সার্ভার স্ট্যাটাস চেক করার মূল ফাংশন।
+         * @param {string} url - যে URL টি চেক করতে হবে।
+         * @returns {Promise<boolean>} - যদি সার্ভার কাজ করে তাহলে true, না হলে false.
+         */
+        async function checkServerStatus(url) {
+            // 1. Timeout সেট করা
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), TIMEOUT_MS);
+
+            try {
+                // 2. Fetch API ব্যবহার করে রিকোয়েস্ট পাঠানো
+                // mode: 'no-cors' ব্যবহার করা হয়েছে যাতে Cross-Origin সমস্যার সম্মুখীন না হতে হয়
+                const response = await fetch(url, {
+                    method: 'HEAD', // পুরো ডেটা না টেনে শুধু হেডার চেক করা
+                    mode: 'no-cors',
+                    signal: controller.signal // Timeout সিগন্যাল
+                });
+                
+                // Timeout ক্লিয়ার করা
+                clearTimeout(timeoutId);
+
+                // 'no-cors' মোডের কারণে আমরা status বা response.ok চেক করতে পারি না। 
+                // রিকোয়েস্টটি যদি নেটওয়ার্ক এরর বা DNS এরর ছাড়া সফলভাবে শেষ হয়, তবেই আমরা ধরে নিচ্ছি এটি কাজ করছে।
+                return true; 
+
+            } catch (error) {
+                // Timeout হলে বা নেটওয়ার্ক এরর হলে এখানে আসবে
+                clearTimeout(timeoutId);
+
+                // Timeout এরর ডিটেক্ট করা
+                if (error.name === 'AbortError') {
+                    console.log(`Timeout for: ${url}`);
+                } else {
+                    console.error(`Error checking ${url}:`, error.message);
+                }
+                return false;
+            }
+        }
+
+        /**
+         * সমস্ত সার্ভার চেক করা এবং ফলাফল ডিসপ্লে করার মূল ফাংশন।
+         */
+        async function checkAllServers() {
+            // চেক করার সময় সেকশনগুলো লুকিয়ে রাখা
+            workingSection.style.display = 'none';
+            notWorkingSection.style.display = 'none';
+
+            const checkPromises = bdixServers.map(async (server) => {
+                const isWorking = await checkServerStatus(server.url);
+                if (isWorking) {
+                    displayWorking(server);
+                } else {
+                    displayNotWorking(server);
+                }
+            });
+
+            // সব চেক শেষ হওয়া পর্যন্ত অপেক্ষা করা
+            await Promise.all(checkPromises);
+
+            // লোডিং মেসেজ লুকিয়ে ফেলা
+            loadingMessage.style.display = 'none';
+
+            // ফলাফল ডিসপ্লে করা
+            workingSection.style.display = 'block';
+            notWorkingSection.style.display = 'block';
+
+            // যদি কোনো সার্ভার না পাওয়া যায়, সেই সেকশনগুলি না দেখানো
+            if (workingList.children.length === 0) {
+                workingSection.style.display = 'none';
+            }
+            if (notWorkingList.children.length === 0) {
+                notWorkingSection.style.display = 'none';
+            }
+        }
+
+        // পেজ লোড হওয়ার সাথে সাথে ফাংশনটি চালু করা
+        window.onload = checkAllServers;
+    </script>
+</body>
+</html>
