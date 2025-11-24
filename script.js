@@ -3,20 +3,46 @@ const TIMEOUT_MS = 5000; // 5 সেকেন্ড
 
 // DOM উপাদানগুলি নির্বাচন
 const startButton = document.getElementById('start-button');
+const categorySelect = document.getElementById('server-category');
 const workingList = document.getElementById('working-list');
 const notWorkingList = document.getElementById('not-working-list');
-const loadingMessage = document.getElementById('loading-message');
 const workingSection = document.getElementById('working-section');
 const notWorkingSection = document.getElementById('not-working-section');
+const workingCount = document.getElementById('working-count');
+const notWorkingCount = document.getElementById('not-working-count');
+
+// প্রোগ্রেস বার উপাদান
+const progressContainer = document.getElementById('progress-container');
+const progressBar = document.getElementById('progress-bar');
+const loadingMessage = document.getElementById('loading-message');
+
+// সার্ভার ক্যাটাগরি থেকে ফাইল পাথ ম্যাপিং
+const serverFileMap = {
+    'ftp': 'ftp_servers.json',
+    'live_tv': 'live_tv_servers.json'
+};
+
 
 /**
- * সমস্ত তালিকা পরিষ্কার করে দেয়।
+ * সমস্ত তালিকা পরিষ্কার করে দেয় এবং গণনা শূন্য করে।
  */
 function clearLists() {
     workingList.innerHTML = '';
     notWorkingList.innerHTML = '';
     workingSection.style.display = 'none';
     notWorkingSection.style.display = 'none';
+    workingCount.textContent = '0';
+    notWorkingCount.textContent = '0';
+}
+
+/**
+ * প্রোগ্রেস বার আপডেট করে।
+ * @param {number} percentage - 0 থেকে 100 এর মধ্যে শতাংশ মান।
+ */
+function updateProgress(percentage) {
+    const p = Math.round(percentage);
+    progressBar.style.width = `${p}%`;
+    progressBar.textContent = `${p}%`;
 }
 
 /**
@@ -50,9 +76,7 @@ function displayNotWorking(server) {
 }
 
 /**
- * সার্ভার স্ট্যাটাস চেক করার মূল ফাংশন।
- * @param {string} url - যে URL টি চেক করতে হবে।
- * @returns {Promise<boolean>} - যদি সার্ভার কাজ করে তাহলে true, না হলে false.
+ * সার্ভার স্ট্যাটাস চেক করার মূল ফাংশন। 
  */
 async function checkServerStatus(url) {
     const controller = new AbortController();
@@ -67,32 +91,35 @@ async function checkServerStatus(url) {
         
         clearTimeout(timeoutId);
         return true; 
-
     } catch (error) {
         clearTimeout(timeoutId);
-        if (error.name === 'AbortError') {
-            console.log(`Timeout for: ${url}`);
-        } else {
-            console.error(`Error checking ${url}:`, error.message);
-        }
         return false;
     }
 }
 
 /**
- * servers.json ফাইল থেকে সার্ভার ডেটা লোড করে।
- * @returns {Promise<Array>} - সার্ভার অবজেক্টের অ্যারে
+ * নির্বাচিত ক্যাটাগরি অনুসারে JSON ফাইল থেকে সার্ভার ডেটা লোড করে।
+ * @param {string} category - নির্বাচিত ক্যাটাগরি ('ftp' বা 'live_tv')।
+ * @returns {Promise<Array>} - সার্ভার অবজেক্টের অ্যারে।
  */
-async function loadServers() {
+async function loadServers(category) {
+    const filename = serverFileMap[category];
+
+    if (!filename) {
+        console.error("Invalid server category selected.");
+        return [];
+    }
+    
     try {
-        const response = await fetch('servers.json');
+        const response = await fetch(filename);
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            throw new Error(`HTTP error! status: ${response.status} while fetching ${filename}`);
         }
+        // যেহেতু ফাইলটি সরাসরি একটি অ্যারে, তাই আমরা এটি সরাসরি রিটার্ন করতে পারি।
         return response.json();
     } catch (error) {
-        console.error("Error loading servers.json:", error);
-        alert("Servers file লোড করা যায়নি। ফাইলটি ঠিক আছে কিনা দেখুন।");
+        console.error(`Error loading ${filename}:`, error);
+        alert(`সার্ভার ফাইল (${filename}) লোড করা যায়নি। ফাইলটি ঠিক আছে কিনা দেখুন।`);
         return [];
     }
 }
@@ -103,39 +130,69 @@ async function loadServers() {
 async function checkAllServers() {
     // 1. UI স্টেট আপডেট
     clearLists();
-    startButton.style.display = 'none';
+    startButton.disabled = true; 
+    startButton.textContent = 'Checking...';
+    progressContainer.style.display = 'block';
     loadingMessage.style.display = 'block';
+    updateProgress(0);
 
+    const selectedCategory = categorySelect.value;
+    
     // 2. সার্ভার ডেটা লোড করা
-    const bdixServers = await loadServers();
+    const serversToCheck = await loadServers(selectedCategory); // এখানে শুধু নির্বাচিত ফাইল লোড হচ্ছে
+
+    if (serversToCheck.length === 0) {
+        // যদি লোড করতে ব্যর্থ হয় বা সার্ভার না থাকে
+        startButton.disabled = false;
+        startButton.textContent = '🚀 Start Check';
+        progressContainer.style.display = 'none';
+        loadingMessage.style.display = 'none';
+        return;
+    }
+
+    const totalServers = serversToCheck.length;
+    let checkedCount = 0;
+    let workingCountValue = 0;
+    let notWorkingCountValue = 0;
 
     // 3. প্রতিটি সার্ভার চেক করা
-    const checkPromises = bdixServers.map(async (server) => {
+    for (const server of serversToCheck) {
         const isWorking = await checkServerStatus(server.url);
+        
         if (isWorking) {
             displayWorking(server);
+            workingCountValue++;
         } else {
             displayNotWorking(server);
+            notWorkingCountValue++;
         }
-    });
 
-    // সব চেক শেষ হওয়া পর্যন্ত অপেক্ষা করা
-    await Promise.all(checkPromises);
+        // প্রোগ্রেস বার আপডেট
+        checkedCount++;
+        const progressPercentage = (checkedCount / totalServers) * 100;
+        updateProgress(progressPercentage);
+    }
 
     // 4. ফলাফল ডিসপ্লে করা
     loadingMessage.style.display = 'none';
-    startButton.style.display = 'block'; // চেক শেষে বাটন আবার দেখানো
+    progressContainer.style.display = 'none';
+    startButton.disabled = false; 
+    startButton.textContent = '🚀 Start Check';
 
+    // কাজ করছে এমন সার্ভার থাকলে দেখানো
     if (workingList.children.length > 0) {
         workingSection.style.display = 'block';
+        workingCount.textContent = workingCountValue;
     }
+    // কাজ করছে না এমন সার্ভার থাকলে দেখানো
     if (notWorkingList.children.length > 0) {
         notWorkingSection.style.display = 'block';
+        notWorkingCount.textContent = notWorkingCountValue;
     }
 }
 
 // "Start Check" বাটনে ইভেন্ট লিসেনার যোগ করা
 startButton.addEventListener('click', checkAllServers);
 
-// শুরুতেই তালিকাগুলো ফাঁকা রাখা এবং সেকশনগুলো লুকিয়ে রাখা
+// পেজ লোড হওয়ার সাথে সাথে তালিকাগুলো ফাঁকা রাখা
 clearLists();
