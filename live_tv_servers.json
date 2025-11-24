@@ -1,18 +1,378 @@
 [
-    {
-        "name": "BDiX Live TV Channel 1",
-        "url": "http://livetv.bdix.server/channel1/"
-    },
-    {
-        "name": "Sports Streaming Server",
-        "url": "http://sports.server.com/live/"
-    },
-    {
-        "name": "News Channel HD",
-        "url": "http://news-hd.local/"
-    },
-    {
-        "name": "External Test Link (Will Fail)",
-        "url": "https://www.google.com/"
-    }
+  {
+    "name": "Aftabnagar Online",
+    "url": "http://103.113.224.68"
+  },
+  {
+    "name": "Aftabnagar Online",
+    "url": "http://tv.anosbd.com"
+  },
+  {
+    "name": "AKNetworks",
+    "url": "http://aklivetv.com"
+  },
+  {
+    "name": "Aliflaila",
+    "url": "http://tv.aliflailabd.com"
+  },
+  {
+    "name": "AMRBD",
+    "url": "http://103.136.200.246"
+  },
+  {
+    "name": "AMRBD",
+    "url": "http://amrbd.com"
+  },
+  {
+    "name": "AyanMedia",
+    "url": "http://tv.ayanmedia.net"
+  },
+  {
+    "name": "BDiX Live TV Channel 1",
+    "url": "http://livetv.bdix.server/channel1/"
+  },
+  {
+    "name": "BDIX Sports",
+    "url": "http://tv.bdixsports.com"
+  },
+  {
+    "name": "BDIPTV",
+    "url": "http://15.1.1.10"
+  },
+  {
+    "name": "BDIPTV",
+    "url": "http://bciptv.net"
+  },
+  {
+    "name": "BDIPTV",
+    "url": "http://bdiptv.net"
+  },
+  {
+    "name": "BDIPTV",
+    "url": "http://bdiptv.stream"
+  },
+  {
+    "name": "BDLAN",
+    "url": "http://live.bdlan.net"
+  },
+  {
+    "name": "BDTV",
+    "url": "http://bdtv.live"
+  },
+  {
+    "name": "Bioscope Live",
+    "url": "https://www.bioscopelive.com"
+  },
+  {
+    "name": "BongoBD",
+    "url": "https://bongobd.com"
+  },
+  {
+    "name": "Business Network (FTPBD)",
+    "url": "http://otv.ftpbd.net"
+  },
+  {
+    "name": "C1 Live",
+    "url": "http://c1live.com"
+  },
+  {
+    "name": "Carnival Internet (Nagordola)",
+    "url": "http://tv.nagordola.live"
+  },
+  {
+    "name": "Chittagong Online Limited",
+    "url": "http://smartbox.digital"
+  },
+  {
+    "name": "Cogent Broadband (KhulnaFlix)",
+    "url": "http://172.27.27.27:8080"
+  },
+  {
+    "name": "Cogent Broadband (KhulnaFlix)",
+    "url": "http://bokasoka.net:8080"
+  },
+  {
+    "name": "Cogent Broadband (KhulnaFlix)",
+    "url": "http://tv.khulnaflix.net"
+  },
+  {
+    "name": "CricHD",
+    "url": "https://crichd.tv"
+  },
+  {
+    "name": "Daulatpur Online (KhulnaPlex)",
+    "url": "http://khulnaplex.net/tv"
+  },
+  {
+    "name": "DDN (CTGTV)",
+    "url": "http://172.20.1.1"
+  },
+  {
+    "name": "DDN (CTGTV)",
+    "url": "http://bdixtv.live"
+  },
+  {
+    "name": "DDN (CTGTV)",
+    "url": "http://ddn.oncast.me"
+  },
+  {
+    "name": "DDN (CTGTV)",
+    "url": "http://www.ctgtv.live"
+  },
+  {
+    "name": "Dhaka Fiber Net",
+    "url": "http://172.50.50.8"
+  },
+  {
+    "name": "Dot Internet",
+    "url": "http://59.153.100.77"
+  },
+  {
+    "name": "Dot Internet",
+    "url": "http://tv.dflix.live"
+  },
+  {
+    "name": "Durbin Live",
+    "url": "http://durbinlive.com"
+  },
+  {
+    "name": "Exord Online (E-Box Live)",
+    "url": "http://tv.ebox.live"
+  },
+  {
+    "name": "Exord Online (E-Box Live)",
+    "url": "http://tv2.ebox.live"
+  },
+  {
+    "name": "External Test Link (Will Fail)",
+    "url": "https://www.google.com/"
+  },
+  {
+    "name": "Flash Net",
+    "url": "http://tv.flashnetbd.net"
+  },
+  {
+    "name": "Future Net",
+    "url": "http://tv.fn-bd.com"
+  },
+  {
+    "name": "Global Bangla TV",
+    "url": "http://globalbanglatv.com"
+  },
+  {
+    "name": "HotFlix",
+    "url": "https://hotflix.stream"
+  },
+  {
+    "name": "ICC",
+    "url": "http://10.16.100.244/livetv.php"
+  },
+  {
+    "name": "iCommunication Broadband (iBox)",
+    "url": "http://tv.iboxbd.online"
+  },
+  {
+    "name": "IT Connection Network",
+    "url": "http://iptv.itcnbd.com"
+  },
+  {
+    "name": "Jadoo Broadband",
+    "url": "https://iptv.jadoodigital.com"
+  },
+  {
+    "name": "JagoBD",
+    "url": "https://beta.jagobd.com"
+  },
+  {
+    "name": "JagoBD",
+    "url": "http://www.jagobd.com"
+  },
+  {
+    "name": "Khulna Live",
+    "url": "http://103.150.6.2"
+  },
+  {
+    "name": "Khulna Live",
+    "url": "http://khulna.bid"
+  },
+  {
+    "name": "Khulna Live",
+    "url": "http://khulnatv.live"
+  },
+  {
+    "name": "KS Network Limited (Wow Movie Zone)",
+    "url": "http://172.27.27.85"
+  },
+  {
+    "name": "KS Network Limited (Wow Movie Zone)",
+    "url": "https://iptv.ksnetworkbd.com"
+  },
+  {
+    "name": "Link Technologies",
+    "url": "http://tv.linktech.net.bd"
+  },
+  {
+    "name": "Link3",
+    "url": "http://www.amaze-tv.com"
+  },
+  {
+    "name": "Link71",
+    "url": "http://103.102.27.172"
+  },
+  {
+    "name": "Live BDIX TV",
+    "url": "https://livebdix.com"
+  },
+  {
+    "name": "Live BDIX TV",
+    "url": "https://tv.livebdix.com"
+  },
+  {
+    "name": "LiveTV.com.bd",
+    "url": "http://livetv.com.bd"
+  },
+  {
+    "name": "MediaLink24 Net",
+    "url": "http://tv.medialink24.net"
+  },
+  {
+    "name": "Millennium (MCN)",
+    "url": "http://iptv.mcnbd.com"
+  },
+  {
+    "name": "Mirpur Online",
+    "url": "http://livetv.mirpur.online"
+  },
+  {
+    "name": "Movie Bazar",
+    "url": "http://113.212.111.246"
+  },
+  {
+    "name": "Movie Bazar",
+    "url": "http://live.moviebazar.net"
+  },
+  {
+    "name": "MTBSL",
+    "url": "http://tv.mtbsl.com"
+  },
+  {
+    "name": "News Channel HD",
+    "url": "http://news-hd.local/"
+  },
+  {
+    "name": "Novus Network",
+    "url": "https://tv.nbox.live"
+  },
+  {
+    "name": "One Net Communications Limited (Dugdugi)",
+    "url": "http://dugdugilive.com"
+  },
+  {
+    "name": "PlusBox",
+    "url": "http://plusbox.tv"
+  },
+  {
+    "name": "Projapoti",
+    "url": "http://projapoti.live"
+  },
+  {
+    "name": "Race Online Limited",
+    "url": "https://iptv.race.net.bd"
+  },
+  {
+    "name": "Rangdhanu Live",
+    "url": "https://hdtv.rangdhanu.live"
+  },
+  {
+    "name": "Rangdhanu Live",
+    "url": "http://plus.tv.rangdhanu.live"
+  },
+  {
+    "name": "Rangdhanu Live",
+    "url": "http://tv.rangdhanu.live"
+  },
+  {
+    "name": "RoarZone",
+    "url": "http://tv.roarzone.info"
+  },
+  {
+    "name": "SAMOnline (DhakaFlix)",
+    "url": "http://172.16.50.2"
+  },
+  {
+    "name": "SAMOnline (DhakaFlix)",
+    "url": "http://172.16.50.22"
+  },
+  {
+    "name": "Satrong",
+    "url": "http://103.214.156.2"
+  },
+  {
+    "name": "Satrong",
+    "url": "http://tv.satrong.live"
+  },
+  {
+    "name": "SmartOnline",
+    "url": "http://live.ctgoz.com"
+  },
+  {
+    "name": "SparkLink",
+    "url": "http://tv.sparklinkbd.com"
+  },
+  {
+    "name": "Sports Streaming Server",
+    "url": "http://sports.server.com/live/"
+  },
+  {
+    "name": "Stargate Communications Limited (StarFlixBD)",
+    "url": "http://172.27.27.3"
+  },
+  {
+    "name": "TetraSoft",
+    "url": "http://tv.tetrasoftbd.com"
+  },
+  {
+    "name": "Unknown Server",
+    "url": "http://10.233.233.12"
+  },
+  {
+    "name": "Unknown Server",
+    "url": "http://103.138.183.6"
+  },
+  {
+    "name": "Unknown Server",
+    "url": "http://103.77.188.2"
+  },
+  {
+    "name": "Unknown Server",
+    "url": "http://103.84.253.5"
+  },
+  {
+    "name": "Unknown Server",
+    "url": "http://103.85.196.10"
+  },
+  {
+    "name": "Unknown Server",
+    "url": "http://11.11.11.11"
+  },
+  {
+    "name": "Unknown Server",
+    "url": "http://172.16.29.28"
+  },
+  {
+    "name": "Unknown Server",
+    "url": "http://172.17.50.112"
+  },
+  {
+    "name": "Unknown Server",
+    "url": "http://175.41.46.16"
+  },
+  {
+    "name": "Unix Live",
+    "url": "http://30.30.30.30"
+  },
+  {
+    "name": "WebTVBD",
+    "url": "https://www.webtvbd.com"
+  }
 ]
