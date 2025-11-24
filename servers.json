@@ -187,4 +187,107 @@
         "name": "Discovery Internet",
         "url": "http://cds3.discoveryftp.net"
     }
+
+    [
+  { name: "One Net Communications Limited (Showtime)", url: "http://www.onesky.com.bd" },
+  { name: "One Net Communications Limited (Showtime)", url: "https://www.1netbd.com" },
+  { name: "One Net Communications Limited (Showtime)", url: "http://10.100.100.10" },
+  { name: "One Net Communications Limited (Showtime)", url: "http://103.77.252.113" },
+  { name: "One Net Communications Limited (Showtime)", url: "http://www.showtimebd.com" },
+
+  { name: "Digital Dot Net (CTGMOVIES)", url: "https://ddnbd.com" },
+  { name: "Digital Dot Net (CTGMOVIES)", url: "http://ctgmovies.com" },
+  { name: "Digital Dot Net (CTGMOVIES)", url: "http://crazyctg.com" },
+  { name: "Digital Dot Net (CTGMOVIES)", url: "http://media.ctgfun.com" },
+
+  { name: "Exord Online (E-Box Live)", url: "http://www.exordonline.com" },
+  { name: "Exord Online (E-Box Live)", url: "http://fs.ebox.live" },
+  { name: "Exord Online (E-Box Live)", url: "http://103.49.168.107" },
+  { name: "Exord Online (E-Box Live)", url: "http://fileserver.ebox.live" },
+  { name: "Exord Online (E-Box Live)", url: "http://play.ebox.live" },
+
+  { name: "ICC Communication Limited", url: "https://icc.com.bd" },
+  { name: "ICC Communication Limited", url: "http://10.16.100.244" },
+  { name: "ICC Communication Limited", url: "http://10.16.100.202/ftps10" },
+  { name: "ICC Communication Limited", url: "http://10.16.100.206/ftps3" },
+
+  { name: "Antaranga Dot Com Limited (DhakaMovie)", url: "https://www.antbd.com" },
+  { name: "Antaranga Dot Com Limited (DhakaMovie)", url: "http://www.antbd.net" },
+  { name: "Antaranga Dot Com Limited (DhakaMovie)", url: "http://103.237.37.181" },
+  { name: "Antaranga Dot Com Limited (DhakaMovie)", url: "http://dhakamovie.com" },
+
+  { name: "X-Press Technologies Limited (NaturalBD)", url: "http://xpress.ltd" },
+  { name: "X-Press Technologies Limited (NaturalBD)", url: "http://103.43.148.68" },
+  { name: "X-Press Technologies Limited (NaturalBD)", url: "http://www.naturalbd.com" },
+
+  { name: "Skyview Online Limited (TimepassBD)", url: "http://skyviewonlineltd.com" },
+  { name: "Skyview Online Limited (TimepassBD)", url: "http://103.200.36.250" },
+  { name: "Skyview Online Limited (TimepassBD)", url: "http://www.timepassbd.live" },
+  { name: "Skyview Online Limited (TimepassBD)", url: "http://ftp.timepassbd.live" },
+
+  { name: "Citycom Network (CityCloud)", url: "https://www.citycomnetwork.com.bd" },
+  { name: "Citycom Network (CityCloud)", url: "http://11.11.11.11" },
+  { name: "Citycom Network (CityCloud)", url: "http://103.204.244.70" },
+  { name: "Citycom Network (CityCloud)", url: "http://103.204.244.70/Data/Data" },
+
+  { name: "Carnival Internet (Nagordola)", url: "https://carnival.com.bd" },
+  { name: "Carnival Internet (Nagordola)", url: "http://103.106.238.74:80/Data" },
+  { name: "Carnival Internet (Nagordola)", url: "http://103.106.238.74:80/Data4" },
+  { name: "Carnival Internet (Nagordola)", url: "http://www.nagordola.com.bd" },
+
+  { name: "Triangle Services Limited (Elaach)", url: "http://www.triangle.com.bd" },
+  { name: "Triangle Services Limited (Elaach)", url: "http://www.elaach.com" },
+
+  { name: "Unique Internet", url: "https://uniquenetbd.com" },
+  { name: "Unique Internet", url: "http://103.91.144.230" },
+  { name: "Unique Internet", url: "http://103.91.144.230/ftpdata" },
+  { name: "Unique Internet", url: "http://www.uniquedownloadbd.com" },
+
+  { name: "Sun Online (Surzomama)", url: "https://sunonlinebd.com" },
+  { name: "Sun Online (Surzomama)", url: "http://103.85.235.254" },
+  { name: "Sun Online (Surzomama)", url: "http://103.85.235.254/storage" },
+
+  { name: "Mojaloss", url: "https://www.mojaloss.stream" },
+
+  { name: "FNFOnline", url: "http://www.fnfonlinebd.com" },
+  { name: "FNFOnline", url: "http://103.82.8.194" },
+  { name: "FNFOnline", url: "http://103.82.8.194/Data" },
+  { name: "FNFOnline", url: "http://movies.fnfonlinebd.com" },
+
+  { name: "DeshNet Broadband", url: "https://deshnetbd.com" },
+  { name: "DeshNet Broadband", url: "http://103.152.18.18" },
+  { name: "DeshNet Broadband", url: "http://103.152.18.18/Data" },
+
+  { name: "Inspire Broadband (iHub)", url: "https://inspirebroadband.net" },
+  { name: "Inspire Broadband (iHub)", url: "http://ihub.live" },
+  { name: "Inspire Broadband (iHub)", url: "http://sg-cdn.ihub.live:8787/download/games" },
+
+  { name: "Chittagong Online Limited", url: "http://www.colbd.com" },
+  { name: "Chittagong Online Limited", url: "https://fiber.colbd.com" },
+  { name: "Chittagong Online Limited", url: "http://www.smartflix.digital" },
+  { name: "Chittagong Online Limited", url: "http://www.smartstudio.digital" },
+  { name: "Chittagong Online Limited", url: "http://metromedia.digital" },
+
+  { name: "CloudOne Internet", url: "http://cloudone.com.bd" },
+  { name: "CloudOne Internet", url: "http://www.c1movies.com" },
+  { name: "CloudOne Internet", url: "http://bdmovies.net" },
+
+  { name: "Link Technologies", url: "https://linktech.net.bd" },
+  { name: "Link Technologies", url: "http://play.linkftp.com" },
+  { name: "Link Technologies", url: "http://cdn.linkftp.com" },
+
+  { name: "Tajpata", url: "http://103.14.129.246" },
+  { name: "Tajpata", url: "http://tajpata.com" },
+  { name: "Tajpata", url: "http://103.14.129.246/data" },
+  { name: "Tajpata", url: "http://file.tajpata.com" },
+
+  { name: "KS Network Limited (Wow Movie Zone)", url: "https://ksnetworkbd.com" },
+  { name: "KS Network Limited (Wow Movie Zone)", url: "http://172.27.27.83" },
+  { name: "KS Network Limited (Wow Movie Zone)", url: "http://172.27.27.84" },
+  { name: "KS Network Limited (Wow Movie Zone)", url: "http://172.27.27.26//2TB4" },
+  { name: "KS Network Limited (Wow Movie Zone)", url: "http://172.27.27.124/s1d1" },
+  { name: "KS Network Limited (Wow Movie Zone)", url: "http://172.27.27.244/2TB1" },
+  { name: "KS Network Limited (Wow Movie Zone)", url: "http://172.27.27.245/2" },
+
+        
 ]
