@@ -1,0 +1,22 @@
+[
+    {
+        "name": "OSPranto BDiX Movie Server 1",
+        "url": "http://example.bdix.server/movies/"
+    },
+    {
+        "name": "OSPranto BDiX FTP 2",
+        "url": "http://192.168.1.100/"
+    },
+    {
+        "name": "BDiX Server 3",
+        "url": "http://10.10.10.10/"
+    },
+    {
+        "name": "BDiX Live TV",
+        "url": "http://example.bdix.server/live/"
+    },
+    {
+        "name": "External Test Link (Google)",
+        "url": "https://www.google.com/"
+    }
+]
