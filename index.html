@@ -7,11 +7,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* [আগের দেওয়া CSS কোডটি এখানে কপি করে পেস্ট করুন] */
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #0d1117;
-            color: #c9d1d9;
+            background-color: #0d1117; /* GitHub Dark Mode Background */
+            color: #c9d1d9; /* Light text color */
             margin: 0;
             padding: 0;
             line-height: 1.6;
@@ -19,14 +18,14 @@
         }
 
         header {
-            background-color: #161b22;
+            background-color: #161b22; /* Slightly darker header */
             padding: 40px 20px;
             margin-bottom: 20px;
-            border-bottom: 2px solid #238636;
+            border-bottom: 2px solid #238636; /* OSPranto Green border */
         }
 
         header h1 {
-            color: #238636;
+            color: #238636; /* OSPranto Green */
             font-weight: 700;
             font-size: 2.5em;
             margin-bottom: 5px;
@@ -43,7 +42,25 @@
             margin: 0 auto;
         }
 
-        /* Start Button Styling */
+        /* Controls and Start Button Styling */
+        .controls {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        #server-category {
+            padding: 10px 15px;
+            font-size: 1.1em;
+            border-radius: 6px;
+            background-color: #161b22;
+            color: #c9d1d9;
+            border: 1px solid #30363d;
+        }
+
         #start-button {
             background-color: #238636;
             color: white;
@@ -54,41 +71,50 @@
             border-radius: 6px;
             cursor: pointer;
             transition: background-color 0.3s;
-            margin-bottom: 30px;
-            display: block;
-            width: fit-content;
-            margin-left: auto;
-            margin-right: auto;
         }
 
-        #start-button:hover {
+        #start-button:hover:not(:disabled) {
             background-color: #3fb950;
+        }
+
+        #start-button:disabled {
+            background-color: #1a1a1a;
+            cursor: not-allowed;
+            opacity: 0.6;
         }
         /* End Start Button Styling */
 
-        /* Loading Spinner */
+        /* Progress Bar */
+        #progress-container {
+            width: 80%;
+            max-width: 500px;
+            margin: 20px auto;
+            background-color: #30363d;
+            border-radius: 5px;
+            overflow: hidden;
+            display: none; /* শুরুতে লুকানো থাকবে */
+        }
+
+        #progress-bar {
+            height: 25px;
+            width: 0%;
+            background-color: #238636;
+            text-align: center;
+            line-height: 25px;
+            color: white;
+            font-weight: bold;
+            transition: width 0.3s;
+        }
+        /* End Progress Bar */
+
+        /* Loading Message */
         #loading-message {
             display: none; /* শুরুতে লুকানো থাকবে */
             padding: 20px;
             border-radius: 8px;
             margin-bottom: 30px;
         }
-
-        .loader {
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid #238636;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 15px auto 0;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        /* End Loading Spinner */
+        /* End Loading Message */
 
         .server-status {
             background-color: #161b22;
@@ -194,25 +220,35 @@
 
     <header>
         <h1>OSPranto Tech BDiX Server Checker</h1>
-        <p>সার্ভারগুলি চেক করতে নিচে **Start Check** বাটনে ক্লিক করুন।</p>
+        <p>ক্যাটাগরি নির্বাচন করুন এবং সার্ভারগুলি চেক করতে **Start Check** বাটনে ক্লিক করুন।</p>
     </header>
 
     <main>
-        <button id="start-button">🚀 Start Check</button>
+        <div class="controls">
+            <label for="server-category" style="font-size: 1.1em;">ক্যাটাগরি নির্বাচন করুন:</label>
+            <select id="server-category">
+                <option value="ftp">FTP Server List</option>
+                <option value="live_tv">Live TV Server List</option>
+            </select>
+            <button id="start-button">🚀 Start Check</button>
+        </div>
+        
+        <div id="progress-container">
+            <div id="progress-bar">0%</div>
+        </div>
 
         <div id="loading-message">
-            <h2>চেক করা হচ্ছে... অনুগ্রহ করে অপেক্ষা করুন।</h2>
-            <div class="loader"></div>
+            <h2>চেক করা হচ্ছে...</h2>
         </div>
 
         <section class="server-status" id="working-section">
-            <h2 class="working-title">✅ কার্যকরী সার্ভারসমূহ (Working)</h2>
+            <h2 class="working-title">✅ কার্যকরী সার্ভারসমূহ (<span id="working-count">0</span>)</h2>
             <ul id="working-list" class="server-list">
                 </ul>
         </section>
 
         <section class="server-status" id="not-working-section">
-            <h2 class="not-working-title">❌ অকার্যকরী সার্ভারসমূহ (Not Working)</h2>
+            <h2 class="not-working-title">❌ অকার্যকরী সার্ভারসমূহ (<span id="not-working-count">0</span>)</h2>
             <ul id="not-working-list" class="server-list">
                 </ul>
         </section>
