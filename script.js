@@ -1,5 +1,6 @@
 // পরীক্ষার জন্য Time-out সেটিংস (মিলি-সেকেন্ডে)
 const TIMEOUT_MS = 5000; // 5 সেকেন্ড
+const CIRCLE_CIRCUMFERENCE = 440; // 2 * PI * 70 (r=70)
 
 // DOM উপাদানগুলি নির্বাচন
 const startButton = document.getElementById('start-button');
@@ -12,9 +13,9 @@ const workingCount = document.getElementById('working-count');
 const notWorkingCount = document.getElementById('not-working-count');
 
 // প্রোগ্রেস বার উপাদান
-const progressContainer = document.getElementById('progress-container');
-const progressBar = document.getElementById('progress-bar');
-const loadingMessage = document.getElementById('loading-message');
+const circularProgressContainer = document.getElementById('circular-progress-container');
+const progressCircle = document.getElementById('progress-circle');
+const progressText = document.getElementById('progress-text'); // Text element inside circle
 
 // সার্ভার ক্যাটাগরি থেকে ফাইল পাথ ম্যাপিং
 const serverFileMap = {
@@ -33,22 +34,32 @@ function clearLists() {
     notWorkingSection.style.display = 'none';
     workingCount.textContent = '0';
     notWorkingCount.textContent = '0';
+    // Ensure text shows 'START' or 0% when lists are cleared
+    progressText.textContent = 'START'; 
+    progressCircle.style.strokeDashoffset = CIRCLE_CIRCUMFERENCE; // Reset circle
 }
 
 /**
- * প্রোগ্রেস বার আপডেট করে।
+ * প্রোগ্রেস বার (বৃত্ত) আপডেট করে।
  * @param {number} percentage - 0 থেকে 100 এর মধ্যে শতাংশ মান।
  */
 function updateProgress(percentage) {
     const p = Math.round(percentage);
-    progressBar.style.width = `${p}%`;
-    progressBar.textContent = `${p}%`;
+    
+    // Fill the circle by reducing the dashoffset
+    const offset = CIRCLE_CIRCUMFERENCE - (p / 100) * CIRCLE_CIRCUMFERENCE;
+    progressCircle.style.strokeDashoffset = offset;
+    
+    progressText.textContent = `${p}%`;
+    
+    // Change text color when nearly complete
+    if (p > 90) {
+        progressText.style.color = '#fff';
+    } else {
+        progressText.style.color = '#4CAF50';
+    }
 }
 
-/**
- * একটি সার্ভারকে Working হিসেবে ডিসপ্লে করে।
- * @param {object} server - সার্ভার অবজেক্ট { name, url }
- */
 function displayWorking(server) {
     const listItem = document.createElement('li');
     listItem.className = 'server-item working';
@@ -60,10 +71,6 @@ function displayWorking(server) {
     workingList.appendChild(listItem);
 }
 
-/**
- * একটি সার্ভারকে Not Working হিসেবে ডিসপ্লে করে।
- * @param {object} server - সার্ভার অবজেক্ট { name, url }
- */
 function displayNotWorking(server) {
     const listItem = document.createElement('li');
     listItem.className = 'server-item not-working';
@@ -99,12 +106,9 @@ async function checkServerStatus(url) {
 
 /**
  * নির্বাচিত ক্যাটাগরি অনুসারে JSON ফাইল থেকে সার্ভার ডেটা লোড করে।
- * @param {string} category - নির্বাচিত ক্যাটাগরি ('ftp' বা 'live_tv')।
- * @returns {Promise<Array>} - সার্ভার অবজেক্টের অ্যারে।
  */
 async function loadServers(category) {
     const filename = serverFileMap[category];
-
     if (!filename) {
         console.error("Invalid server category selected.");
         return [];
@@ -115,7 +119,6 @@ async function loadServers(category) {
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status} while fetching ${filename}`);
         }
-        // যেহেতু ফাইলটি সরাসরি একটি অ্যারে, তাই আমরা এটি সরাসরি রিটার্ন করতে পারি।
         return response.json();
     } catch (error) {
         console.error(`Error loading ${filename}:`, error);
@@ -124,29 +127,26 @@ async function loadServers(category) {
     }
 }
 
+
 /**
  * সমস্ত সার্ভার চেক করা এবং ফলাফল ডিসপ্লে করার মূল ফাংশন।
  */
 async function checkAllServers() {
-    // 1. UI স্টেট আপডেট
+    // 1. UI স্টেট আপডেট: চেক শুরু
     clearLists();
-    startButton.disabled = true; 
-    startButton.textContent = 'Checking...';
-    progressContainer.style.display = 'block';
-    loadingMessage.style.display = 'block';
-    updateProgress(0);
+    startButton.style.display = 'none'; // Start Button লুকানো
+    circularProgressContainer.classList.add('checking'); // Circle দেখানো
+    progressText.textContent = '0%';
+    progressText.style.color = '#4CAF50';
 
     const selectedCategory = categorySelect.value;
-    
-    // 2. সার্ভার ডেটা লোড করা
-    const serversToCheck = await loadServers(selectedCategory); // এখানে শুধু নির্বাচিত ফাইল লোড হচ্ছে
+    const serversToCheck = await loadServers(selectedCategory);
 
     if (serversToCheck.length === 0) {
-        // যদি লোড করতে ব্যর্থ হয় বা সার্ভার না থাকে
-        startButton.disabled = false;
-        startButton.textContent = '🚀 Start Check';
-        progressContainer.style.display = 'none';
-        loadingMessage.style.display = 'none';
+        // ত্রুটি হলে UI স্বাভাবিক করা
+        startButton.style.display = 'block';
+        circularProgressContainer.classList.remove('checking');
+        progressText.textContent = 'START';
         return;
     }
 
@@ -155,7 +155,7 @@ async function checkAllServers() {
     let workingCountValue = 0;
     let notWorkingCountValue = 0;
 
-    // 3. প্রতিটি সার্ভার চেক করা
+    // 2. প্রতিটি সার্ভার চেক করা
     for (const server of serversToCheck) {
         const isWorking = await checkServerStatus(server.url);
         
@@ -173,18 +173,15 @@ async function checkAllServers() {
         updateProgress(progressPercentage);
     }
 
-    // 4. ফলাফল ডিসপ্লে করা
-    loadingMessage.style.display = 'none';
-    progressContainer.style.display = 'none';
-    startButton.disabled = false; 
-    startButton.textContent = '🚀 Start Check';
+    // 3. ফলাফল ডিসপ্লে করা: চেক শেষ
+    circularProgressContainer.classList.remove('checking');
+    startButton.style.display = 'block'; // Start Button আবার দেখানো
 
-    // কাজ করছে এমন সার্ভার থাকলে দেখানো
+    // যদি কোনো সার্ভার পাওয়া যায়, তবেই সেকশনগুলি দেখানো
     if (workingList.children.length > 0) {
         workingSection.style.display = 'block';
         workingCount.textContent = workingCountValue;
     }
-    // কাজ করছে না এমন সার্ভার থাকলে দেখানো
     if (notWorkingList.children.length > 0) {
         notWorkingSection.style.display = 'block';
         notWorkingCount.textContent = notWorkingCountValue;
@@ -194,5 +191,6 @@ async function checkAllServers() {
 // "Start Check" বাটনে ইভেন্ট লিসেনার যোগ করা
 startButton.addEventListener('click', checkAllServers);
 
-// পেজ লোড হওয়ার সাথে সাথে তালিকাগুলো ফাঁকা রাখা
+// পেজ লোড হওয়ার সাথে সাথে তালিকাগুলো ফাঁকা রাখা এবং START টেক্সট দেখানো
 clearLists();
+startButton.style.display = 'block'; // Ensure button is visible initially
