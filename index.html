@@ -4,139 +4,168 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OSPranto Tech BDiX Server Checker</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
+        /* Base Setup and Background */
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #0d1117; /* GitHub Dark Mode Background */
-            color: #c9d1d9; /* Light text color */
+            /* Soft radial gradient background for premium feel */
+            background: radial-gradient(circle at top left, #1a2a3a, #0a141d); 
+            color: #e0e6f1; /* Light, soft text color */
             margin: 0;
             padding: 0;
             line-height: 1.6;
             text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Glassmorphism/Card Styles */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08); /* Slight transparency */
+            backdrop-filter: blur(10px); /* Blur effect */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Deep shadow */
+            padding: 30px;
+            margin-bottom: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-3px); /* Subtle lift on hover */
         }
 
         header {
-            background-color: #161b22; /* Slightly darker header */
-            padding: 40px 20px;
+            padding: 50px 20px 30px;
             margin-bottom: 20px;
-            border-bottom: 2px solid #238636; /* OSPranto Green border */
         }
 
         header h1 {
-            color: #238636; /* OSPranto Green */
+            color: #4CAF50; /* A slightly brighter green for elegance */
             font-weight: 700;
-            font-size: 2.5em;
+            font-size: 3em;
             margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(76, 175, 80, 0.5); /* Glowing text */
         }
 
         header p {
-            color: #8b949e;
-            font-size: 1.1em;
+            color: #aeb5c0;
+            font-weight: 300;
+            font-size: 1.2em;
         }
 
         main {
             padding: 0 20px 40px;
-            max-width: 1200px;
+            max-width: 1000px;
+            width: 90%;
             margin: 0 auto;
+            flex-grow: 1;
         }
 
-        /* Controls and Start Button Styling */
+        /* Controls Styling */
         .controls {
-            margin-bottom: 30px;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
             flex-wrap: wrap;
+            margin-bottom: 40px;
         }
 
         #server-category {
-            padding: 10px 15px;
+            padding: 12px 20px;
             font-size: 1.1em;
-            border-radius: 6px;
-            background-color: #161b22;
-            color: #c9d1d9;
-            border: 1px solid #30363d;
+            border-radius: 8px;
+            background-color: #0a141d; /* Dark input background */
+            color: #e0e6f1;
+            border: 1px solid #4CAF50;
+            outline: none;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        #server-category:focus {
+            border-color: #81C784;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
         }
 
         #start-button {
-            background-color: #238636;
-            color: white;
+            background: linear-gradient(45deg, #4CAF50, #66BB6A); /* Gradient Button */
+            color: #0a141d;
             border: none;
-            padding: 15px 30px;
+            padding: 15px 35px;
             font-size: 1.2em;
-            font-weight: 600;
-            border-radius: 6px;
+            font-weight: 700;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            text-transform: uppercase;
         }
 
         #start-button:hover:not(:disabled) {
-            background-color: #3fb950;
+            background: linear-gradient(45deg, #66BB6A, #4CAF50);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
         }
 
         #start-button:disabled {
-            background-color: #1a1a1a;
+            background: #2a3a4a;
+            color: #8b949e;
             cursor: not-allowed;
-            opacity: 0.6;
         }
-        /* End Start Button Styling */
 
         /* Progress Bar */
         #progress-container {
-            width: 80%;
-            max-width: 500px;
-            margin: 20px auto;
-            background-color: #30363d;
-            border-radius: 5px;
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto 40px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
             overflow: hidden;
-            display: none; /* শুরুতে লুকানো থাকবে */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+            display: none;
         }
 
         #progress-bar {
-            height: 25px;
+            height: 30px;
             width: 0%;
-            background-color: #238636;
+            background: linear-gradient(90deg, #4CAF50, #81C784);
             text-align: center;
-            line-height: 25px;
-            color: white;
-            font-weight: bold;
-            transition: width 0.3s;
+            line-height: 30px;
+            color: #0a141d;
+            font-weight: 700;
+            transition: width 0.3s ease-out;
+            border-radius: 10px 0 0 10px;
         }
-        /* End Progress Bar */
 
-        /* Loading Message */
-        #loading-message {
-            display: none; /* শুরুতে লুকানো থাকবে */
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-        }
-        /* End Loading Message */
-
+        /* Server Status Sections */
         .server-status {
-            background-color: #161b22;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
+            /* Inherits glass-card style */
             text-align: left;
-            display: none; /* শুরুতে লুকানো থাকবে */
+            display: none;
+        }
+
+        .server-status h2 {
+            font-weight: 600;
+            padding-bottom: 10px;
+            margin-top: 0;
+            font-size: 1.8em;
+            letter-spacing: 0.5px;
         }
 
         .working-title {
-            color: #3fb950;
-            border-bottom: 2px solid #3fb950;
-            padding-bottom: 10px;
-            margin-top: 0;
+            color: #81C784; 
+            border-bottom: 2px solid #81C784;
+            text-shadow: 0 0 5px rgba(129, 199, 132, 0.3);
         }
 
         .not-working-title {
-            color: #f85149;
-            border-bottom: 2px solid #f85149;
-            padding-bottom: 10px;
-            margin-top: 0;
+            color: #FF5252; /* A modern red */
+            border-bottom: 2px solid #FF5252;
+            text-shadow: 0 0 5px rgba(255, 82, 82, 0.3);
         }
 
         .server-list {
@@ -148,47 +177,52 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px;
-            border-bottom: 1px solid #21262d;
+            padding: 15px 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Very soft separator */
+            transition: background-color 0.2s;
         }
 
-        .server-item:last-child {
-            border-bottom: none;
+        .server-item:hover {
+            background-color: rgba(255, 255, 255, 0.03); /* Subtle hover background */
         }
 
         .server-item a {
-            color: #58a6ff;
+            color: #90CAF9; /* Soft blue link */
             text-decoration: none;
+            font-weight: 400;
             word-break: break-all;
         }
 
         .server-item a:hover {
+            color: #BBDEFB;
             text-decoration: underline;
-            color: #79c0ff;
         }
 
         .status-icon {
-            font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 4px;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 6px;
             font-size: 0.9em;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .working .status-icon {
-            background-color: #238636;
-            color: white;
+            background-color: #4CAF50;
+            color: #0a141d;
         }
 
         .not-working .status-icon {
-            background-color: #891d29;
-            color: white;
+            background-color: #FF5252;
+            color: #0a141d;
         }
 
-        /* Footer and Contact Info */
+        /* Footer and Contact Info - Premium Look */
         footer {
-            background-color: #161b22;
+            margin-top: auto; /* Pushes footer to the bottom */
+            background-color: #0a141d;
             padding: 20px;
-            border-top: 2px solid #238636;
+            border-top: 2px solid #4CAF50;
         }
 
         .contact-info {
@@ -196,23 +230,25 @@
         }
         
         .contact-info h3 {
-            color: #238636;
+            color: #4CAF50;
             margin-top: 0;
+            font-weight: 600;
         }
 
         .contact-info p {
             margin: 5px 0;
-            font-size: 0.95em;
+            font-weight: 300;
         }
 
         .contact-info a {
-            color: #58a6ff;
+            color: #90CAF9;
             text-decoration: none;
         }
 
         .copyright {
-            color: #8b949e;
+            color: #5d6675;
             font-size: 0.8em;
+            margin-top: 15px;
         }
     </style>
 </head>
@@ -220,12 +256,12 @@
 
     <header>
         <h1>OSPranto Tech BDiX Server Checker</h1>
-        <p>ক্যাটাগরি নির্বাচন করুন এবং সার্ভারগুলি চেক করতে **Start Check** বাটনে ক্লিক করুন।</p>
+        <p>ক্যাটাগরি নির্বাচন করুন এবং দ্রুত, নির্ভরযোগ্য সার্ভার স্ট্যাটাস চেক করুন।</p>
     </header>
 
     <main>
-        <div class="controls">
-            <label for="server-category" style="font-size: 1.1em;">ক্যাটাগরি নির্বাচন করুন:</label>
+        <div class="controls glass-card">
+            <label for="server-category" style="font-size: 1.1em; font-weight: 600;">ক্যাটাগরি নির্বাচন করুন:</label>
             <select id="server-category">
                 <option value="ftp">FTP Server List</option>
                 <option value="live_tv">Live TV Server List</option>
@@ -241,13 +277,13 @@
             <h2>চেক করা হচ্ছে...</h2>
         </div>
 
-        <section class="server-status" id="working-section">
+        <section class="server-status glass-card" id="working-section">
             <h2 class="working-title">✅ কার্যকরী সার্ভারসমূহ (<span id="working-count">0</span>)</h2>
             <ul id="working-list" class="server-list">
                 </ul>
         </section>
 
-        <section class="server-status" id="not-working-section">
+        <section class="server-status glass-card" id="not-working-section">
             <h2 class="not-working-title">❌ অকার্যকরী সার্ভারসমূহ (<span id="not-working-count">0</span>)</h2>
             <ul id="not-working-list" class="server-list">
                 </ul>
@@ -256,13 +292,13 @@
 
     <footer>
         <div class="contact-info">
-            <h3>OSPranto Tech - Contact</h3>
+            <h3>OSPranto Tech - Connect</h3>
             <p><strong>GitHub:</strong> <a href="https://github.com/OSPrantoTech" target="_blank">OSPranto Tech</a></p>
             <p><strong>Email:</strong> <a href="mailto:OSPranto.Official@gmail.com">OSPranto.Official@gmail.com</a></p>
             <p><strong>Facebook:</strong> <a href="https://www.facebook.com/AdnanHasanPranto" target="_blank">Adnan Hasan Pranto</a></p>
             <p><strong>Telegram:</strong> <a href="https://t.me/MrMysteryMoon" target="_blank">@MrMysteryMoon</a></p>
         </div>
-        <p class="copyright">&copy; 2024 OSPranto Tech. All rights reserved.</p>
+        <p class="copyright">Developed by OSPranto Tech | &copy; 2025. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>
