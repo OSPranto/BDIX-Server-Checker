@@ -1,348 +1,358 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>যোগাযোগ | OSPranto Tech</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>যোগাযোগ | OSPranto Tech</title>
 
-    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="icon" href="logo.png" type="image/png">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    
-    <style>
-        /* Base Setup and Background */
-        body {
-            font-family: 'Poppins', sans-serif;
-            /* আগের কোডের মতো ব্যাকগ্রাউন্ড ঠিক করার দরকার নেই, কারণ আপনি অন্য স্টাইল ব্যবহার করেছেন। */
-            /* background: radial-gradient(circle at top left, #1a2a3a, #0a141d); */ 
-            /* আগের কোডে এই মানগুলো ব্যবহার করা হয়েছিল: */
-            /* background-color: #0d1117; color: #c9d1d9; */
-            
-            color: #e0e6f1; /* এই রংটি আপনার থিমের সাথে সামঞ্জস্যপূর্ণ */
-            min-height: 100vh;
-            padding: 40px 20px;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-sizing: border-box;
-            text-align: center;
-        }
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <style>
+        /* Base Setup and Background (Matching index.html) */
+        body {
+            font-family: 'Poppins', sans-serif;
+            /* Matching index.html's Radial Gradient Background */
+            background: radial-gradient(circle at top left, #1a2a3a, #0a141d); 
+            color: #e0e6f1;
+            min-height: 100vh;
+            padding: 40px 20px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+            text-align: center;
+        }
 
-        .container {
-            max-width: 900px; /* আগের কোড: 900px */
-            width: 100%;
-            flex-grow: 1;
-        }
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            flex-grow: 1;
+        }
 
-        .header {
-            text-align: center;
-            margin-bottom: 40px; /* আগের কোড: 40px */
-            padding: 0; /* আগের কোড: 0 */
-        }
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 20px;
+        }
 
-        /* লোগো স্টাইল */
-        .logo {
-            margin-bottom: 15px;
-        }
-        
-        .logo img {
-            width: 80px; /* **পরিবর্তিত (আগের কোড: 80px)** */
-            height: 80px; /* **পরিবর্তিত (আগের কোড: 80px)** */
-            border-radius: 50%;
-            /* Highlight Color ঠিক রাখা হলো, তবে বর্ডার সাইজ ঠিক করা হয়েছে */
-            border: 3px solid rgba(76, 175, 80, 0.4); 
-            /* Shadow ঠিক রাখা হলো */
-            box-shadow: 0 0 10px rgba(76, 175, 80, 0.5); /* **পরিবর্তিত (আগের কোড: 10px)** */
-        }
+        /* লোগো স্টাইল (Matching index.html's circular logo) */
+        .logo {
+            margin-bottom: 15px;
+        }
+        
+        .logo img {
+            width: 120px; /* Adjusted size */
+            height: 120px;
+            border-radius: 50%;
+            /* Highlight Color (Matching index.html) */
+            border: 3px solid rgba(76, 175, 80, 0.4); 
+            /* Highlight Shadow (Matching index.html) */
+            box-shadow: 0 0 15px rgba(76, 175, 80, 0.8), 0 0 5px rgba(0, 0, 0, 0.5);
+        }
 
-        .header h1 {
-            color: #4CAF50; 
-            font-size: 2.5em; /* **পরিবর্তিত (আগের কোড: 2.5em)** */
-            font-weight: 700;
-            margin-bottom: 10px;
-            text-shadow: none; /* আগের কোডে ছিল না */
-        }
+        .header h1 {
+            /* Highlight Color (Matching index.html) */
+            color: #4CAF50; 
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+        }
 
-        .header p {
-            font-size: 1em; /* **পরিবর্তিত (আগের কোড: 1em)** */
-            color: #aeb5c0;
-            font-weight: 400; /* ফন্ট-ওয়েট: 300 থেকে 400 করা হলো, যা আগের কোডে ডিফল্ট ছিল */
-        }
-        
-        .grid-layout {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-            margin-bottom: 30px;
-        }
+        .header p {
+            font-size: 1em;
+            color: #aeb5c0;
+            font-weight: 300;
+        }
+        
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
 
-        @media (min-width: 768px) {
-            .grid-layout {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
+        @media (min-width: 768px) {
+            .grid-layout {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
 
-        /* Card Style */
-        .card {
-            background: rgba(255, 255, 255, 0.08); /* আগের কোড: #161b22; */
-            backdrop-filter: blur(10px); /* আগের কোডে ছিল না */
-            border: 1px solid rgba(255, 255, 255, 0.1); /* আগের কোড: 1px solid #30363d; */
-            border-radius: 12px; /* **পরিবর্তিত (আগের কোড: 12px)** */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* **পরিবর্তিত (আগের কোড: 0 4px 15px rgba(0, 0, 0, 0.3))** */
-            padding: 30px;
-            transition: none; /* আগের কোডে ছিল না */
-            text-align: left;
-        }
-        
-        .card:hover {
-            transform: none; /* আগের কোডে ছিল না */
-        }
+        /* Card Style (Matching index.html's glass-card) */
+        .card {
+            /* Glassmorphism/Dark Card Base */
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            padding: 30px;
+            transition: transform 0.3s ease;
+            text-align: left;
+        }
+        
+        .card:hover {
+            transform: translateY(-3px);
+        }
 
-        .card h2 {
-            font-size: 1.5em; /* **পরিবর্তিত (আগের কোড: 1.5em)** */
-            font-weight: 600;
-            color: #c9d1d9; /* **পরিবর্তিত (আগের কোড: #c9d1d9)** */
-            margin-bottom: 20px;
-            border-bottom: none; /* আগের কোডে ছিল না */
-            padding-bottom: 0; /* আগের কোডে ছিল না */
-        }
+        .card h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #81C784; /* Lighter Green for sub-headings */
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(76, 175, 80, 0.2);
+            padding-bottom: 10px;
+        }
 
-        /* ফর্ম স্টাইল */
-        .form-group {
-            margin-bottom: 15px; /* **পরিবর্তিত (আগের কোড: 15px)** */
-        }
+        /* ফর্ম স্টাইল */
+        .form-group {
+            margin-bottom: 18px;
+        }
 
-        .form-group label {
-            display: block;
-            color: #c9d1d9; /* **পরিবর্তিত (আগের কোড: #c9d1d9)** */
-            font-size: 0.9em; /* **পরিবর্তিত (আগের কোড: 0.9em)** */
-            margin-bottom: 5px; /* **পরিবর্তিত (আগের কোড: 5px)** */
-            font-weight: 400; /* **পরিবর্তিত (আগের কোডে ছিল না বা ডিফল্ট 400)** */
-        }
+        .form-group label {
+            display: block;
+            color: #e0e6f1;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
 
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 10px; /* **পরিবর্তিত (আগের কোড: 10px)** */
-            background-color: #21262d; /* **পরিবর্তিত (আগের কোড: #21262d)** */
-            border: 1px solid #30363d; /* **পরিবর্তিত (আগের কোড: 1px solid #30363d)** */
-            color: #c9d1d9; /* **পরিবর্তিত (আগের কোড: #c9d1d9)** */
-            border-radius: 6px; /* **পরিবর্তিত (আগের কোড: 6px)** */
-            box-sizing: border-box;
-            font-size: 1em; /* **পরিবর্তিত (আগের কোড: 1em)** */
-            transition: none; /* আগের কোডে ছিল না */
-        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            /* Dark Input Background */
+            background-color: #0a141d; 
+            /* Subtle Border Matching Controls in index.html */
+            border: 1px solid #4CAF50; 
+            color: #e0e6f1;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 1em;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
 
-        .form-group input:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: #58a6ff; /* **পরিবর্তিত (আগের কোড: #58a6ff)** */
-            box-shadow: none; /* আগের কোডে ছিল না */
-        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            /* Focus Highlight Matching index.html */
+            border-color: #81C784; 
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+        }
 
-        .submit-button {
-            width: 100%;
-            background-color: #238636; /* **পরিবর্তিত (আগের কোড: #238636)** */
-            color: white;
-            border: none;
-            padding: 12px; /* **পরিবর্তিত (আগের কোড: 12px)** */
-            border-radius: 6px; /* **পরিবর্তিত (আগের কোড: 6px)** */
-            cursor: pointer;
-            font-size: 1em; /* **পরিবর্তিত (আগের কোড: 1em)** */
-            font-weight: 600;
-            transition: background-color 0.3s;
-            text-transform: none; /* আগের কোডে ছিল না */
-            box-shadow: none; /* আগের কোডে ছিল না */
-        }
+        .submit-button {
+            width: 100%;
+            /* Button Style Matching index.html's Start Button */
+            background: linear-gradient(45deg, #4CAF50, #66BB6A); 
+            color: #0a141d;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 700;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+        }
 
-        .submit-button:hover {
-            background-color: #2ea043; /* **পরিবর্তিত (আগের কোড: #2ea043)** */
-            box-shadow: none; /* আগের কোডে ছিল না */
-        }
+        .submit-button:hover {
+            background: linear-gradient(45deg, #66BB6A, #4CAF50);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.5);
+        }
 
-        /* কন্টাক্ট ইনফো কার্ড স্টাইল */
-        .info-link {
-            display: flex;
-            align-items: center;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 8px; /* **পরিবর্তিত (আগের কোড: 8px)** */
-            background-color: #21262d; /* **পরিবর্তিত (আগের কোড: #21262d)** */
-            border: 1px solid #30363d; /* **পরিবর্তিত (আগের কোড: 1px solid #30363d)** */
-            text-decoration: none;
-            transition: background-color 0.3s;
-            box-shadow: none; /* আগের কোডে ছিল না */
-        }
+        /* কন্টাক্ট ইনফো কার্ড স্টাইল */
+        .info-link {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            /* Darker background for contrast */
+            background-color: #1a2a3a; 
+            border: 1px solid rgba(76, 175, 80, 0.2); 
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
 
-        .info-link:hover {
-            background-color: #30363d; /* **পরিবর্তিত (আগের কোড: #30363d)** */
-            transform: none; /* আগের কোডে ছিল না */
-        }
+        .info-link:hover {
+            background-color: #213040;
+            transform: translateX(5px);
+        }
 
-        .info-icon {
-            width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 6px; /* **পরিবর্তিত (আগের কোড: 6px)** */
-            margin-right: 15px;
-            font-size: 1.5em;
-            color: #c9d1d9; /* **পরিবর্তিত (আগের কোড: #c9d1d9)** */
-        }
-        /* Icon background colors based on common branding, but using index theme colors */
-        .bg-red { background-color: #f85149; } /* **পরিবর্তিত (আগের কোড: #f85149)** */
-        .bg-blue-sky { background-color: #0088cc; } /* **পরিবর্তিত (আগের কোড: #0088cc)** */
-        .bg-blue-dark { background-color: #1877f2; } 
-        .bg-green { background-color: #30363d; } /* **পরিবর্তিত (আগের কোড: #30363d)** */
+        .info-icon {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%; /* Circular Icons */
+            margin-right: 15px;
+            font-size: 1.5em;
+            color: #0a141d; /* Dark text inside icon circle */
+        }
+        /* Icon background colors based on common branding, but using index theme colors */
+        .bg-red { background-color: #ff5252; } /* Error Red for Email */
+        .bg-blue-sky { background-color: #90CAF9; } /* Link Color for Telegram */
+        .bg-blue-dark { background-color: #1877f2; } 
+        .bg-green { background-color: #4CAF50; } /* Theme Green for GitHub */
 
-        .info-content h3 {
-            font-size: 1.1em; /* **পরিবর্তিত (আগের কোড: 1.1em)** */
-            font-weight: 600;
-            color: #58a6ff; /* **পরিবর্তিত (আগের কোড: #58a6ff)** */
-            margin: 0;
-        }
+        .info-content h3 {
+            font-size: 1.1em;
+            font-weight: 600;
+            /* Link color for titles */
+            color: #90CAF9; 
+            margin: 0;
+        }
 
-        .info-content p {
-            font-size: 0.9em; /* **পরিবর্তিত (আগের কোড: 0.9em)** */
-            color: #8b949e; /* **পরিবর্তিত (আগের কোড: #8b949e)** */
-            margin: 0;
-        }
+        .info-content p {
+            font-size: 0.9em;
+            color: #aeb5c0;
+            margin: 0;
+        }
 
-        /* ফুটার */
-        .footer {
-            margin-top: 40px; /* **পরিবর্তিত (আগের কোড: 40px)** */
-            background-color: transparent; /* আগের কোডে ছিল না */
-            border-top: 1px solid #30363d; /* **পরিবর্তিত (আগের কোড: 1px solid #30363d)** */
-            padding-top: 20px;
-            text-align: center;
-            width: 100%;
-        }
-        
-        .back-to-home {
-            background-color: #58a6ff; /* **পরিবর্তিত (আগের কোড: #58a6ff)** */
-            color: #0d1117; /* **পরিবর্তিত (আগের কোড: #0d1117)** */
-            padding: 10px 20px; /* **পরিবর্তিত (আগের কোড: 10px 20px)** */
-            border-radius: 6px; /* **পরিবর্তিত (আগের কোড: 6px)** */
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-block;
-            transition: background-color 0.3s;
-            border: none; /* **পরিবর্তিত (আগের কোডে ছিল না)** */
-            margin-bottom: 0; /* আগের কোডে ছিল না */
-        }
-        
-        .back-to-home:hover {
-            background-color: #79b8ff; /* **পরিবর্তিত (আগের কোড: #79b8ff)** */
-            color: #0d1117; /* **পরিবর্তিত (আগের কোডে ছিল না)** */
-        }
-        
-        .copyright {
-            color: #8b949e; /* **পরিবর্তিত (আগের কোড: #8b949e)** */
-            font-size: 0.9em; /* **পরিবর্তিত (আগের কোড: 0.9em)** */
-            margin-bottom: 10px;
-        }
-    </style>
+        /* ফুটার */
+        .footer {
+            margin-top: 50px;
+            /* Matching index.html footer style */
+            background-color: #0a141d; 
+            border-top: 2px solid #4CAF50;
+            padding-top: 20px;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .back-to-home {
+            /* Button Style Matching index.html Footer Button */
+            background-color: transparent; 
+            color: #e0e6f1;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: background-color 0.3s, color 0.3s;
+            border: 2px solid #4CAF50;
+            margin-bottom: 20px;
+        }
+        
+        .back-to-home:hover {
+            background-color: #4CAF50;
+            color: #0a141d;
+        }
+        
+        .copyright {
+            color: #5d6675;
+            font-size: 0.8em;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="header">
-            <div class="logo">
-                <img src="logo1.png" alt="OSPranto Tech Logo">
-            </div>
-            
-            <h1>যোগাযোগ করুন (Contact Us)</h1>
-            <p>ডেভেলপার: **OSPranto Tech**</p>         </div>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="logo1.png" alt="OSPranto Tech Logo">
+            </div>
+            
+            <h1>যোগাযোগ করুন (Contact Us)</h1>
+            <p>আমাদের সাথে যুক্ত হোন এবং আপনার মূল্যবান মতামত দিন।</p>
+        </div>
 
-        <div class="grid-layout">
-            
-            <div class="card">
-                <h2>একটি বার্তা পাঠান</h2>                 <form id="contact-form">
-                    <div class="form-group">
-                        <label for="name">আপনার নাম</label>
-                        <input type="text" id="name" placeholder="আপনার নাম লিখুন" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">ইমেল ঠিকানা</label>
-                        <input type="email" id="email" placeholder="আপনার ইমেল লিখুন" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">বিষয়</label>
-                        <input type="text" id="subject" placeholder="বিষয় লিখুন" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">বার্তা</label>
-                        <textarea id="message" rows="5" placeholder="আপনার বার্তা লিখুন" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-button">
-                        বার্তা পাঠান
-                    </button>
-                </form>
-            </div>
+        <div class="grid-layout">
+            
+            <div class="card">
+                <h2>বার্তা পাঠান (Send a Message)</h2>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">আপনার নাম</label>
+                        <input type="text" id="name" placeholder="আপনার নাম লিখুন" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">ইমেল ঠিকানা</label>
+                        <input type="email" id="email" placeholder="আপনার ইমেল লিখুন" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">বিষয়</label>
+                        <input type="text" id="subject" placeholder="বিষয় লিখুন" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">বার্তা</label>
+                        <textarea id="message" rows="5" placeholder="আপনার বার্তা লিখুন" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">
+                        বার্তা পাঠান
+                    </button>
+                </form>
+            </div>
 
-            <div class="card">                 <h2>ডেভেলপার কন্টাক্ট (OSPranto Tech)</h2>
+            <div class="card">
+                <h2>ডেভেলপার কন্টাক্ট (OSPranto Tech)</h2>
 
-                <a href="mailto:OSPranto.Official@gmail.com" class="info-link">
-                    <div class="info-icon bg-red"><i class="ri-mail-line"></i></div>
-                    <div class="info-content">
-                        <h3>Email (Primary)</h3>
-                        <p>OSPranto.Official@gmail.com</p>
-                    </div>
-                </a>
+                <a href="mailto:OSPranto.Official@gmail.com" class="info-link">
+                    <div class="info-icon bg-red"><i class="ri-mail-line"></i></div>
+                    <div class="info-content">
+                        <h3>Email (Primary)</h3>
+                        <p>OSPranto.Official@gmail.com</p>
+                    </div>
+                </a>
 
-                <a href="https://t.me/MrMysteryMoon" target="_blank" class="info-link">
-                    <div class="info-icon bg-blue-sky"><i class="ri-telegram-line"></i></div>
-                    <div class="info-content">
-                        <h3>Telegram</h3>
-                        <p>@MrMysteryMoon</p>
-                    </div>
-                </a>
+                <a href="https://t.me/MrMysteryMoon" target="_blank" class="info-link">
+                    <div class="info-icon bg-blue-sky"><i class="ri-telegram-line"></i></div>
+                    <div class="info-content">
+                        <h3>Telegram</h3>
+                        <p>@MrMysteryMoon</p>
+                    </div>
+                </a>
 
-                <a href="https://facebook.com/AdnanHasanPranto" target="_blank" class="info-link">
-                    <div class="info-icon bg-blue-dark"><i class="ri-facebook-box-line"></i></div>
-                    <div class="info-content">
-                        <h3>Facebook</h3>
-                        <p>Adnan Hasan Pranto</p>
-                    </div>
-                </a>
+                <a href="https://facebook.com/AdnanHasanPranto" target="_blank" class="info-link">
+                    <div class="info-icon bg-blue-dark"><i class="ri-facebook-box-line"></i></div>
+                    <div class="info-content">
+                        <h3>Facebook</h3>
+                        <p>Adnan Hasan Pranto</p>
+                    </div>
+                </a>
 
-                <a href="https://github.com/OSPrantoTech" target="_blank" class="info-link">
-                    <div class="info-icon bg-green"><i class="ri-github-line"></i></div>
-                    <div class="info-content">
-                        <h3>GitHub</h3>
-                        <p>OSPranto Tech</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
+                <a href="https://github.com/OSPrantoTech" target="_blank" class="info-link">
+                    <div class="info-icon bg-green"><i class="ri-github-line"></i></div>
+                    <div class="info-content">
+                        <h3>GitHub</h3>
+                        <p>OSPranto Tech</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
 
-    <div class="footer">
-        <a href="index.html" class="back-to-home">
-            হোমপেজে ফিরে যান
-        </a>
-        <p class="copyright">Developed by OSPranto Tech | &copy; 2025. All rights reserved.</p>
-    </div>
+    <div class="footer">
+        <a href="index.html" class="back-to-home">
+            হোমপেজে ফিরে যান
+        </a>
+        <p class="copyright">Developed by OSPranto Tech | &copy; 2025. All rights reserved.</p>
+    </div>
 
-    <script>
-        // Send Message (Mailto) Functionality
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault(); 
+    <script>
+        // Send Message (Mailto) Functionality
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault(); 
 
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
 
-            const emailBody = `Sender Name: ${name}\nSender Email: ${email}\n\nMessage:\n${message}`;
-            
-            const mailtoLink = `mailto:OSPranto.Official@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+            const emailBody = `Sender Name: ${name}\nSender Email: ${email}\n\nMessage:\n${message}`;
+            
+            const mailtoLink = `mailto:OSPranto.Official@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
 
-            window.location.href = mailtoLink;
+            window.location.href = mailtoLink;
 
-            this.reset();
-        });
-    </script>
+            this.reset();
+        });
+    </script>
 </body>
 </html>
